@@ -1,20 +1,21 @@
 # ! /bin/bash
 
-# Sprawdzenie poprawności liczby argumentów.
+# Checking the integrity of script arguments.
+# Checking the no. of arguments
 if [ $# -lt 2 ]
 then
    echo "Error! Insufficient no. of arguments."
    exit 1;
 fi
 
-# Sprawdzenie czy podany katalog istnieje.
+# Checking if given directory exists.
 if [ ! -d $1 ]
 then
    echo "Error! The first argument must be an existing directory within this scope."
    exit 1;
 fi
 
-# Pętla sprawdzająca elementy z katalogu. Jeśli rozszerzenie elementu zgadza się z rozszerzeniem przekazanym w argumencie, to następuje przeniesienie zawartości do pliku całościowego.
+# Loop checking elements from the catalog. If the element extension matches the extension provided in script's arguments the content of the file gets relocated to the summary file.
 for i in `ls $1`
 do
    checked_extension=$(echo $i | cut -d "." -f 2)
